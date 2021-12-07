@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../css/bootstrap.css" rel="stylesheet" />
+    <link href="../../font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../css/plugins/dataTables/datatables.min.css" rel="stylesheet" />
+    <link href="../../css/animate.css" rel="stylesheet" />
+    <link href="../../css/plugins/select2/select2.min.css" rel="stylesheet" />
+
+    <link href="../../css/plugins/switchery/switchery.css" rel="stylesheet">
+
+    <link href="../../css/style.css" rel="stylesheet" />
+    <style>
+        #input_Descripcion {
+            height: 100px !important;
+        }
+    </style>
+</head>
+
+<body class="white-bg">
+    <input type="hidden" id="hidden_Idencuesta" />
+    <div class="ibox-content">
+        <div class="wrapper wrapper-content animated fadeInRight ">
+            <div class="widget-body">
+                <form class="form-horizontal">
+                    <div class="row btnLista" id="div_Lista">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                            <div class="table-responsive">
+                                <table id="table_Lista" class="table table-bordered" style="width:100%;"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="div_Formulario" class="cssOcultarObjeto btnFormulario">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+                                <div class="form-group">
+                                    <label>Código: </label>
+                                    <div class="input-group">
+
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-code"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="input_Codigo" maxlength="20" mensaje="Código" requerido="true" validacion="texto" />
+                                    </div>
+                                    <small>
+                                        Máximo 20 caracteres.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
+                                <div class="form-group">
+                                    <label>Nombre: </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-pencil"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="input_Nombre" maxlength="200" mensaje="Nombre" requerido="true" validacion="texto" />
+                                    </div>
+                                    <small>
+                                        Máximo 200 caracteres.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Descripción: </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary" style="padding-top: 35px !important;">
+                                            <i class="fa fa-pencil"></i>
+                                        </span>
+                                        <textarea rows="5" class="form-control" id="input_Descripcion" maxlength="200" requerido="false" mensaje="Descripcion"></textarea>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                        <div class="row col-md-12">
+                            <button type="button" onclick="AñadirPregunta();" class="form-control">Agregar Pregunta</button>
+                        </div>
+                          <div class="row">
+                            <div id="contenedor" class="col-md-12">
+                                <div id="Pregunta-1" class="Pregunta">
+                                    <label for="">Pregunta #1</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin Vendor Js -->
+    <!-- Mainly scripts -->
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../../js/plugins/dataTables/datatables.min.js"></script>
+    <script src="../../js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+    <script src="../../js/plugins/select2/select2.full.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="../../js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- Switchery -->
+    <script src="../../js/plugins/switchery/switchery.js"></script>
+
+    <script src="../../js/Configuracion.js"></script>
+    <script src="../../js/generales_Fn.js"></script>
+    <script src="encuestas.js?1.7"></script>
+
+</body>
+
+</html>

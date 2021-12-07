@@ -1,0 +1,409 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+ <link href="../../css/bootstrap.css" rel="stylesheet" />
+    <link href="../../font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../css/plugins/dataTables/datatables.min.css" rel="stylesheet" />
+    <link href="../../css/animate.css" rel="stylesheet" />
+    <link href="../../css/plugins/select2/select2.min.css" rel="stylesheet" />
+    <link href="../../css/plugins/iCheck/custom.css" rel="stylesheet" />
+    <link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" />
+    <link href="../../css/plugins/switchery/switchery.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../js/plugins/jquery-ui/jquery-ui.min.css" />
+    <link href="../../css/style.css" rel="stylesheet" />
+    <style>
+        textarea {
+        min-height: 4em;
+        max-height: 40vh;
+        width: 100%;
+        }
+        
+        .panel-heading {
+            cursor: pointer !important;
+        }
+    </style>
+
+    <style>
+        
+    </style>
+</head>
+
+<body class="white-bg">
+    <input type="hidden" id="hidden_IdContratos" />
+    <input type="hidden" id="hidden_Empresa" />
+    <input type="hidden" id="hidden_IdRango" />
+    <input type="hidden" id="hidden_CodigoDiagnostico" />
+    <input type="hidden" id="hidden_NombreDiagnostico" />
+    <div class="ibox-content">
+        <div class="wrapper wrapper-content animated fadeInRight ">
+            <div class="widget-body">
+                <form class="form-horizontal">
+
+                   
+
+                            <div class="row btnLista" id="div_Lista">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                    <div class="table-responsive">
+                                        <table id="table_Lista" class="table table-bordered" style="width:100%;"></table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="div_Formulario" class="cssOcultarObjeto btnFormulario">
+
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item ">
+                                        <a class="nav-item nav-link active" id="a_tab_Informacion" data-toggle="tab"
+                                            onclick="mostrarTab('div_FormularioContrato')" role="tab" aria-controls="home" aria-selected="true"><i
+                                                class="fa fa-info-circle"></i>&#160; Contrato</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-item nav-link" id="a_tab_Parametrizacion" data-toggle="tab" role="tab"
+                                            onclick="mostrarTab('div_Logos')" aria-controls="profile" aria-selected="false"><i
+                                                class="fa fa-calendar"></i>&#160; Frecuencia</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-item nav-link" id="a_tab_Parametrizacion" data-toggle="tab" role="tab"
+                                            onclick="mostrarTab('div_ModeloAtencion')" aria-controls="profile" aria-selected="false"><i 
+                                                class="fa fa-th-list"></i>&#160; Modelos de atenció</a>
+                                    </li>
+                                
+                                </ul>
+                                
+                                
+                                <div class="tab-content" id="myTabContent">
+                                
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 tab-pane fade show active" id="div_FormularioContrato" role="tabpanel">
+
+                                        <div class="row">
+
+
+                                            <div class="col-sm-3 col-md-3  col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Número: </label>
+                                                    <div class="input-group">
+
+                                                        <span class="input-group-addon addon-primary">
+                                                            <i class="fa fa-code"></i>
+                                                        </span>
+                                                        <input type="text" class="form-control" id="input_Codigo" maxlength="20" mensaje="Código" requerido="true" validacion="texto" />
+                                                    </div>
+                                                    <small>
+                                                        Máximo 20 caracteres.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+                                                <div class="form-group">
+                                                    <label for="input_Homologo">Homólogo</label>
+                                                    <div class="input-group">
+                                            
+                                                        <span class="input-group-addon addon-primary">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </span>
+                                                        <input type="text" class="form-control" id="input_Homologo" maxlength="200" mensaje="Homologo"
+                                                            requerido="false" validacion="texto" />
+                                                    </div>
+                                                    <small>
+                                                        Máximo 20 caracteres.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-5 col-lg-6 col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Nombre de Contrato: </label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon addon-primary">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </span>
+                                                        <input type="text" class="form-control" id="input_Nombre" maxlength="200" mensaje="Nombre" requerido="true" validacion="texto" />
+                                                    </div>
+                                                    <small>
+                                                        Máximo 200 caracteres.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-5 col-lg-4 col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Cliente: </label>
+                                                    <select id="select_Cliente" class="form-control" mensaje="Cliente" requerido="true" validacion="texto"></select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-2 col-lg-2 col-xs-12">
+                                                        <div class="form-group">
+                                                            <label>Poblacion: </label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon addon-primary">
+                                                                    <i class="fa fa-users"></i>
+                                                                </span>
+                                                                <input type="number" class="form-control" id="input_Poblacion" maxlength="200" mensaje="Nombre" requerido="true" validacion="texto" />
+                                                            </div>
+                                                            <small>
+                                                                Máximo 200 caracteres.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-sm-5 col-md-4 col-lg-3 col-xs-12">
+                                                        <div class="form-group">
+                                                            <label>Valor de Contrato: </label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon addon-primary">
+                                                                    <i class="fa fa-money"></i>
+                                                                </span>
+                                                                <input type="number" class="form-control" id="input_ValorContrato" maxlength="200" mensaje="Nombre" requerido="false" validacion="texto" />
+                                                            </div>
+                                                            <small>
+                                                                Máximo 200 caracteres.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3 col-md-6 col-lg-3 col-xs-12">
+                                                        <div class="form-group">
+                                                            <label>País: </label>
+                                                            <div class="input-group">
+                                                                <select id="select_Pais" class="form-control" mensaje="País" data-toggle="popover" requerido="true"
+                                                                    validacion="texto" style="width:100%" placeholder="Seleccione..."></select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-sm-3 col-md-6 col-lg-3 col-xs-12">
+                                                        <div class="form-group">
+                                                            <label>Municipio: </label>
+                                                            <div class="input-group">
+                                                                <select id="select_Municipio" class="form-control" disabled mensaje="Municipio" data-toggle="popover"
+                                                                    style="width:100%" requerido="true" validacion="texto" placeholder="Seleccione..."></select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1 col-md-1 col-lg-1 col-xs-12">
+                                                        <div class="form-group">
+                                                            <label for="input_Activo">Activo: </label><br />
+                                                            <input type="checkbox" class="js-switch" id="input_Activo" checked />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-6 col-lg-3 col-xs-12">
+                                                            <div class="form-group">
+                                                                <label>Fecha Inicio Contrato:</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon addon-primary">
+                                                                        <i class="fa fa-calendar"></i>
+                                                                    </span>
+                                                                    <input type="date" class="form-control" data-toggle="popover" id="input_FechaInicioContrato" maxlength="20" mensaje="Fecha inicio contrato" requerido="true" validacion="texto" placeholder="Fecha inicio contrato" />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6 col-lg-3 col-xs-12">
+                                                            <div class="form-group">
+                                                                <label>Fecha Finalizacion Contrato:</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon addon-primary">
+                                                                        <i class="fa fa-calendar"></i>
+                                                                    </span>
+                                                                    <input type="date" class="form-control" data-toggle="popover" id="input_FechaFinContrato" maxlength="20" mensaje="Fecha de finalizacion de contrato" requerido="true" validacion="texto" placeholder="Fecha fin contrato" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                            
+                                                <div class="form-group">
+                                                    <label>Descripción: </label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon addon-primary">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </span>
+                                            
+                                                        <textarea rows="3" class="" id="input_Descripcion" maxlength="200" requerido="false" mensaje="Descripcion"
+                                                            placeholder="Descripción"></textarea>
+                                                    </div>
+                                            
+                                                </div>
+                                            </div>
+
+                                            
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Alcance: </label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon addon-primary">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </span>
+                                                        <textarea rows="2" class="" id="input_Alcance" maxlength="200" requerido="false" mensaje="Alcance"
+                                                            placeholder="Alcance"></textarea>
+                                                    </div>
+                                            
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row" id="div_Configuración">
+                                        
+                                        </div>
+
+
+                                        
+
+
+
+                                        
+
+
+                                        
+
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 tab-pane fade" id="div_Logos" role="tabpanel">
+                                       
+
+                                        <div class="ibox-content">
+                                            <div class="panel-body">
+                                                <div class="panel-group ListaEventos" id="accordion">
+                                                    <!-- <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <h5 class="panel-title">
+                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Collapsible Group Item#1</a>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapseOne" class="panel-collapse collapse in">
+                                                            <div class="panel-body">
+                                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                   
+
+
+
+                                    </div>
+
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 tab-pane fade" id="div_ModeloAtencion" role="tabpanel">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                                    <div class="row" id="div_Configuración">
+                                                        
+                                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                                            <h3>Modelos de atenció</h3>
+                                                            <hr />
+                                                            
+                                                            <div class="row">
+                                                                <div class="col-sm-11 col-md-11 col-lg-11 col-xs-11">
+        
+                                                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                                                        <label for="input_EdadSuperior">Modelos: </label>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-11 col-md-11 col-lg-11 col-xs-12">
+                                                                                <div class="input-group">
+                                                                                     <select class="js-example-placeholder-single js-states form-control"  id="input_Diagnosticos1" multiple="multiple" ></select>
+                                                                                </div>
+                                                                            </div>
+        
+                                                                            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1">
+                                                                                <span class="CursorPointer" onclick="agregarRango();" title="Agregar rango">
+                                                                                    <i class="fa fa-2x fa-plus-circle"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+        
+        
+                                                                    <div class="table-responsive">
+                                                                        <table id="table_ModelosAtencion" class="table table-bordered" style="width:100%;"></table>
+                                                                    </div>
+        
+                                                                    <div style="height: 200px">
+        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+        
+                                                        </div>
+                                                    </div>
+                                                </div>
+        
+                                            </div>
+                                        </div>
+
+                                    </div>                                                       
+
+                        
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin Vendor Js -->
+    <!-- Mainly scripts -->
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../../js/plugins/dataTables/datatables.min.js"></script>
+    <script src="../../js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+    <script src="../../js/plugins/select2/select2.full.min.js"></script>
+    <script src="../../js/jquery.autosize.js"></script>
+
+  
+
+    <!-- jQuery UI -->
+    <script src="../../js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- Switchery -->
+    <script src="../../js/plugins/iCheck/icheck.min.js"></script>
+    <script src="../../js/plugins/switchery/switchery.js"></script>
+
+    <script src="../../js/Configuracion.js"></script>
+    <script src="../../js/generales_Fn.js"></script>
+    <script src="Contratos.js?1.14"></script>
+
+
+    <script>
+        var autoExpand = function (field) {
+
+            // Reset field height
+            field.style.height = 'inherit';
+
+            // Get the computed styles for the element
+            var computed = window.getComputedStyle(field);
+
+            // Calculate the height
+            var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
+                + parseInt(computed.getPropertyValue('padding-top'), 10)
+                + field.scrollHeight
+                + parseInt(computed.getPropertyValue('padding-bottom'), 10)
+                + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
+
+            field.style.height = height + 'px';
+
+        };
+
+        document.addEventListener('input', function (event) {
+            if (event.target.tagName.toLowerCase() !== 'textarea') return;
+            autoExpand(event.target);
+        }, false);
+    </script>
+
+</body>
+
+</html>

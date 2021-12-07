@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../css/bootstrap.css" rel="stylesheet" />
+    <link href="../../font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../css/plugins/dataTables/datatables.min.css" rel="stylesheet" />
+    <link href="../../css/animate.css" rel="stylesheet" />
+    <link href="../../css/plugins/select2/select2.min.css" rel="stylesheet" />
+
+    <link href="../../css/plugins/switchery/switchery.css" rel="stylesheet">
+
+    <link href="../../css/style.css" rel="stylesheet" />
+    <style>
+        #input_Descripcion {
+            height: 100px !important;
+        }
+    </style>
+</head>
+
+<body class="white-bg">
+    <input type="hidden" id="hidden_Idforos" />
+    <div class="ibox-content">
+        <div class="wrapper wrapper-content animated fadeInRight ">
+            <div class="widget-body">
+                <form class="form-horizontal">
+                    <div class="row btnLista" id="div_Lista">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                            <div class="table-responsive">
+                                <table id="table_Lista" class="table table-bordered" style="width:100%;"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="div_Formulario" class="cssOcultarObjeto btnFormulario">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>Código: </label>
+                                    <div class="input-group">
+
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-code"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="input_Codigo" maxlength="20" mensaje="Código" requerido="true" validacion="texto" />
+                                    </div>
+                                    <small>
+                                        Máximo 20 caracteres.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>Nombre: </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-pencil"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="input_Nombre" maxlength="200" mensaje="Nombre" requerido="true" validacion="texto" />
+                                    </div>
+                                    <small>
+                                        Máximo 200 caracteres.
+                                    </small>
+                                </div>
+                            </div>
+                            <div id="TipoForo" class="col-sm-6 col-md-6 col-lg-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Tipo de Foro: </label>
+                                    <div class="input-group">
+                                        <select id="select_TipodeEvento" data-toggle="popover" class="form-control" mensaje="Tipo de identificación" requerido="true" validacion="texto" onchange="ConsultarPrivacidad();">
+                                            <option value="Publico">Público</option>
+                                            <option value="Privado">Privado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="TipoPrivacidad" class="col-sm-6 col-md-6 col-lg-6 col-xs-6 cssOcultarObjeto">
+                                <div class="form-group">
+                                    <label>Tipo de Privacida: </label>
+                                    <div class="input-group">
+                                        <select id="select_TipoPrivacidad" data-toggle="popover" class="form-control" mensaje="Tipo de identificación" requerido="true" validacion="texto" onchange="ConsultarPrivacidad();">
+                                            <option value="Torre">Torre</option>
+                                            <option value="Residente">Residente</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Descripción: </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary" style="padding-top: 35px !important;">
+                                            <i class="fa fa-pencil"></i>
+                                        </span>
+                                        <textarea rows="5" class="form-control" id="input_Descripcion" maxlength="200" requerido="false" mensaje="Descripcion"></textarea>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                            <div id="DivResisdentes"  class="col-sm-12 col-md-12 col-lg-12 col-xs-12 cssOcultarObjeto">
+                                <div class="row" id="div_Configuración">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                        <div class="col-md-12">
+                                            <h3>Residentes asociados</h3>
+                                            <hr />
+                                        </div>
+                                        
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-11 col-md-11 col-lg-11 col-xs-11">
+
+                                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 pl-4">
+                                                    <label for="input_EdadSuperior">Residentes: </label>
+                                                    <div class="row">
+
+                                                        <div class="col-sm-11 col-md-11 col-lg-11 col-xs-12 ">
+                                                            <div class="input-group">
+                                                                <select class="js-example-placeholder-single js-states form-control"  id="input_Diagnosticos1" multiple="multiple" ></select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1">
+                                                            <span class="CursorPointer" onclick="agregarRango();" title="Agregar rango">
+                                                                <i class="fa fa-2x fa-plus-circle"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="table-responsive">
+                                                    <table id="table_ConfiguracionResidentes" class="table table-bordered" style="width:100%;"></table>
+                                                </div>
+
+                                                <div style="height: 200px">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="DivTorres"  class="col-sm-12 col-md-12 col-lg-12 col-xs-12 cssOcultarObjeto">
+                                <div class="row" id="div_Configuración">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                        <div class="col-md-12">
+                                            <h3>Torres asociados</h3>
+                                            <hr />
+                                        </div>
+                                        
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-11 col-md-11 col-lg-11 col-xs-11">
+
+                                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 pl-4">
+                                                    <label for="input_EdadSuperior">Torres: </label>
+                                                    <div class="row">
+
+                                                        <div class="col-sm-11 col-md-11 col-lg-11 col-xs-12 ">
+                                                            <div class="input-group">
+                                                                <select class="js-example-placeholder-single js-states form-control"  id="input_Diagnosticos1" multiple="multiple" ></select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1">
+                                                            <span class="CursorPointer" onclick="agregarRango();" title="Agregar rango">
+                                                                <i class="fa fa-2x fa-plus-circle"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="table-responsive">
+                                                    <table id="table_ConfiguracionTorres" class="table table-bordered" style="width:100%;"></table>
+                                                </div>
+
+                                                <div style="height: 200px">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <!-- <div class="card text-center">
+                            <div class="card-header">
+                              Featured
+                            </div>
+                            <div class="card-body">
+                              <h5 class="card-title">Special title treatment</h5>
+                              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                              2 days ago
+                            </div>
+                          </div> -->
+                    </div>
+                    <br />
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin Vendor Js -->
+    <!-- Mainly scripts -->
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../../js/plugins/dataTables/datatables.min.js"></script>
+    <script src="../../js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+    <script src="../../js/plugins/select2/select2.full.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="../../js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- Switchery -->
+    <script src="../../js/plugins/switchery/switchery.js"></script>
+
+    <script src="../../js/Configuracion.js"></script>
+    <script src="../../js/generales_Fn.js"></script>
+    <script src="Foros.js?1.7"></script>
+
+</body>
+
+</html>

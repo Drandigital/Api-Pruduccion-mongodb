@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <link href="../../css/plugins/switchery/switchery.css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" rel="stylesheet" />
+    <link href="../../font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../css/plugins/dataTables/datatables.min.css" rel="stylesheet" />
+    <link href="../../css/animate.css" rel="stylesheet" />
+    <link href="../../css/plugins/select2/select2.min.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+</head>
+<body class="gray-bg ">
+
+
+    <input type="hidden" id="hidden_IdTorre" />
+    <input type="file" class="custom-file-input" id="input_FileImagen" style="display: none" accept="image/jpeg">
+    <div class="ibox-content btnLista">
+        <div class="wrapper wrapper-content animated fadeInRight ">
+            <div class="widget-body">
+                <form class="form-horizontal">
+                    <div class="row" id="div_Lista">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                            <div class="table-responsive">
+                                <table id="table_Lista" class="table table-bordered" style="width:100%;"></table>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="div_Formulario" class="cssOcultarObjeto btnFormulario">
+        <div class="row">
+            
+            <div class="col-sm-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Codigo de la torre:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-barcode"></i>
+                                        </span>
+                                        <input type="text" class="form-control" data-toggle="popover" id="input_Codigo" maxlength="20" mensaje="Primer Apellido" requerido="true" validacion="texto" placeholder="Codigo" />
+                                    </div>
+                                    <small class="form-text text-muted" style="text-align: right;">Máximo 20 caracteres.</small>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Nombre de la torre:</label>
+                                    <div class="input-group">
+                                       
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-building-o"></i>
+                                        </span>
+                                        <input type="text" class="form-control" data-toggle="popover" id="input_Nombre" maxlength="20" mensaje="Primer Nombre" requerido="true" validacion="texto" placeholder="Primer Nombre" />
+                                    </div>
+                                    <small class="form-text text-muted" style="text-align: right;">Máximo 20 caracteres.</small>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Numero de pisos:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-pencil"></i>
+                                        </span>
+                                        <input type="text" class="form-control" data-toggle="popover" id="input_NumeroPiso" maxlength="20" mensaje="Segundo Nombre" requerido="false" validacion="texto" placeholder="Ingrese el  numero de pisos" />
+                                    </div>
+                                    <small class="form-text text-muted" style="text-align: right;">Máximo 20 caracteres.</small>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Cantidad Maxima de apartamento:</label>
+                                    <div class="input-group">
+                                  
+                                        <input type="text" class="form-control" data-toggle="popover" id="input_CantidadApartamento" maxlength="20" mensaje="Segundo Nombre" requerido="false" validacion="texto" placeholder="Ingrese la  Cantidad Maxima de apartamento" />
+                                    </div>
+                                    <small class="form-text text-muted" style="text-align: right;">Máximo 20 caracteres.</small>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Descripción: </label>
+                                    <textarea style="width:100%;" id="textarea_Descripcion" rows="1" maxlength="250" requerido="false" validacion="texto"></textarea>
+                                    <small class="form-text text-muted">
+                                        Maximo 250 caracteres.
+                                    </small>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+
+
+    <!-- Begin Vendor Js -->
+    <!-- Switchery -->
+    <script src="../../js/plugins/switchery/switchery.js"></script>
+
+    <!-- Mainly scripts -->
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../../js/plugins/dataTables/datatables.min.js"></script>
+    <script src="../../js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+    <script src="../../js/plugins/select2/select2.full.min.js"></script>
+    <script src="../../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <script src="../../js/plugins/jasny/jasny-bootstrap.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="../../js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+
+
+    <script src="../../js/Configuracion.js?1.0"></script>
+    <script src="../../js/generales_Fn.js"></script>
+    <script src="Torres.js"></script>
+
+</body>
+</html>

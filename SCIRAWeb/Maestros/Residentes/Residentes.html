@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <link href="../../css/plugins/switchery/switchery.css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" rel="stylesheet" />
+    <link href="../../font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../css/plugins/dataTables/datatables.min.css" rel="stylesheet" />
+    <link href="../../css/animate.css" rel="stylesheet" />
+    <link href="../../css/plugins/select2/select2.min.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+</head>
+<body class="gray-bg ">
+    <input type="hidden" id="hidden_IdResidentes" />
+    <input type="file" class="custom-file-input" id="input_FileImagen" style="display: none" accept="image/jpeg">
+    <div class="ibox-content btnLista">
+        <div class="wrapper wrapper-content animated fadeInRight ">
+            <div class="widget-body">
+                <form class="form-horizontal">
+                    <div class="row" id="div_Lista">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                            <div class="table-responsive">
+                                <table id="table_Lista" class="table table-bordered" style="width:100%;"></table>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="div_Formulario" class="cssOcultarObjeto btnFormulario">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="ibox">
+                    <div class="ibox-content" style="min-height: 661px;">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 m-b-md">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                    <div class="form-group">
+                                        <img id="img_Foto" src="" style="width: 100%;" class="rounded-circle" onerror="this.src='../../img/sin-imagen.png'" alt="Logo" onclick="mostrarBuscadorImagen(this)">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                    <label class="btn btn-dark col-md-12" onclick="img_Foto.click()"><i class="fa fa-camera"></i>&#160;Agregar foto</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Rol: </label>
+                                    <select id="select_Rol" class="form-control" mensaje="Rol" requerido="true" validacion="texto"></select>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Login:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" data-toggle="popover" id="input_Login" maxlength="20" mensaje="Login" requerido="true" validacion="texto" placeholder="Login" />
+                                    </div>
+                                    <small class="form-text text-muted" style="text-align: right;">Máximo 20 caracteres.</small>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Contraseña:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                        <input type="password" class="form-control" data-toggle="popover" id="input_Clave" maxlength="20" mensaje="Contraseña" requerido="true" validacion="texto" placeholder="Contraseña" />
+                                    </div>
+                                    <small class="form-text text-muted" style="text-align: right;">Máximo 20 caracteres.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <div class="row">
+
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Tipo de residente: </label>
+                                    <div class="input-group">
+                                        <select id="select_TipoResidente" data-toggle="popover" class="form-control" mensaje="Tipo de Residente" requerido="true" validacion="texto" placeholder="Selecionar el tipo de Residente">
+                                            <option value="RE">Familiar</option>
+                                            <option value="CP">Copropirtario</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Tipo de identificación: </label>
+                                    <div class="input-group">
+                                        <select id="select_TipoIdentificacion" data-toggle="popover" class="form-control" mensaje="Tipo de identificación" requerido="true" validacion="texto">
+                                            <option value="CC">Cédula de ciudadanía</option>
+                                            <option value="NIT">NIT</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>Identificación: </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-pencil"></i>
+                                        </span>
+                                        <input type="text" class="form-control" data-toggle="popover" id="input_Identificacion" maxlength="20" mensaje="Identificación" requerido="true" validacion="texto" placeholder="Identificación" />
+                                    </div>
+              
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Primer Nombre:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-pencil"></i>
+                                        </span>
+                                        <input type="text" class="form-control" data-toggle="popover" id="input_PrimerNombre" maxlength="20" mensaje="Primer Nombre" requerido="true" validacion="texto" placeholder="Primer Nombre" />
+                                    </div>
+                                    <small class="form-text text-muted" style="text-align: right;">Máximo 20 caracteres.</small>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Segundo Nombre:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-pencil"></i>
+                                        </span>
+                                        <input type="text" class="form-control" data-toggle="popover" id="input_SegundoNombre" maxlength="20" mensaje="Segundo Nombre" requerido="false" validacion="texto" placeholder="Segundo Nombre" />
+                                    </div>
+                                    <small class="form-text text-muted" style="text-align: right;">Máximo 20 caracteres.</small>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Primer Apellido:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-pencil"></i>
+                                        </span>
+                                        <input type="text" class="form-control" data-toggle="popover" id="input_PrimerApellido" maxlength="20" mensaje="Primer Apellido" requerido="true" validacion="texto" placeholder="Primer Apellido" />
+                                    </div>
+                                    <small class="form-text text-muted" style="text-align: right;">Máximo 20 caracteres.</small>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Segundo Apellido:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-pencil"></i>
+                                        </span>
+                                        <input type="text" class="form-control" data-toggle="popover" id="input_SegundoApellido" maxlength="20" mensaje="Segundo Apellido" requerido="false" validacion="texto" placeholder="Segundo Apellido" />
+                                    </div>
+                                    <small class="form-text text-muted" style="text-align: right;">Máximo 20 caracteres.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Fecha Nacimiento:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <input type="date" class="form-control" data-toggle="popover" id="input_FechaNacimiento" maxlength="20" mensaje="Fecha Nacimiento" requerido="true" validacion="texto" placeholder="Fecha Nacimiento" />
+                                    </div>
+                                    <small class="form-text text-muted" style="text-align: right;">Máximo 20 caracteres.</small>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Correo electrónico:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-at"></i>
+                                        </span>
+                                        <input type="text" class="form-control" data-toggle="popover" id="input_Email" maxlength="200" mensaje="Correo electrónico" requerido="true" validacion="texto" placeholder="Correo electrónico" />
+                                    </div>
+                                    <small class="form-text text-muted" style="text-align: right;">Máximo 200 caracteres.</small>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Teléfono: </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-phone"></i>
+                                        </span>
+                                        <input type="number" class="form-control" maxlength="20" id="input_Telefono" mensaje="Teléfono" onkeypress="return keyUpSoloNumero(event)" requerido="false" validacion="numEntero " />
+                                    </div>
+                                    <small>
+                                        Máximo 20 caracteres.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Celular:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-mobile"></i>
+                                        </span>
+                                        <input type="text" class="form-control" data-toggle="popover" id="input_Celular" maxlength="20" mensaje="Celular" requerido="true" validacion="texto" data-mask="(999) 999-9999" placeholder="">
+                                    </div>
+                                    <small class="form-text text-muted" style="text-align: right;">(999) 999-9999.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>Numero de apartamento: </label>
+                                    <select id="select_NumeroApartamento" class="form-control" mensaje="Numero de apartamento" requerido="true" validacion="texto"></select>
+                                </div>
+                            </div>
+                         
+                        
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>País: </label>
+                                    <select id="select_Pais" class="form-control" mensaje="País" requerido="true" validacion="texto"></select>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12">
+                                <div class="form-group">
+                                    <label>Municipio: </label>
+                                    <select id="select_Municipio" class="form-control" disabled mensaje="Municipio" requerido="true" validacion="texto"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+                                <div class="form-group">
+                                    <label>Dirección: </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon addon-primary">
+                                            <i class="fa fa-map-marker"></i>
+                                        </span>
+                                        <input type="text" class="form-control" maxlength="200" id="input_Direccion" mensaje="Dirección" requerido="false" validacion="texto" />
+                                    </div>
+                                    <small>
+                                        Máximo 200 caracteres.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="input_Activo">Activo: </label><br />
+                                    <input type="checkbox" class="js-switch" id="input_Activo" checked />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+
+    <!-- Begin Vendor Js -->
+
+    <!-- Switchery -->
+    <script src="../../js/plugins/switchery/switchery.js"></script>
+
+    <!-- Mainly scripts -->
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../../js/plugins/dataTables/datatables.min.js"></script>
+    <script src="../../js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+    <script src="../../js/plugins/select2/select2.full.min.js"></script>
+    <script src="../../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <script src="../../js/plugins/jasny/jasny-bootstrap.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="../../js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+
+
+    <script src="../../js/Configuracion.js?1.0"></script>
+    <script src="../../js/generales_Fn.js"></script>
+    <script src="Residentes.js"></script>
+
+</body>
+</html>

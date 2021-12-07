@@ -1,0 +1,338 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Empresa</title>
+
+    <!-- Stylesheet
+    <link rel="stylesheet" href="../../../assets/css/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../../assets/css/owl-carousel/owl.theme.min.css">
+    <link rel="stylesheet" href="../../../assets/css/bootstrap-toggle/bootstrap-toggle.min.css" />
+        -->
+
+    <link href="../../css/bootstrap.css" rel="stylesheet" />
+    <link href="../../font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../css/plugins/dataTables/datatables.min.css" rel="stylesheet" />
+    <link href="../../css/plugins/select2/select2.min.css" rel="stylesheet" />
+
+    <link href="../../css/plugins/switchery/switchery.css" rel="stylesheet">
+
+    <link href="../../css/animate.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+
+
+</head>
+<body class="white-bg">
+
+    <input type="hidden" id="hidden_IdEmpresa" />
+
+    <div>
+        <div class="wrapper wrapper-content animated fadeInRight ">
+
+            <div class="widget-body">
+                <form class="form-horizontal">
+                    <!----------------------------------------INICIO TABS------------------------------------------------->
+                    <div class="row">
+                        <div class="col-sm-12 col-sm-12 col-lg-12 col-xs-12">
+
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item ">
+                                    <a class="nav-item nav-link active" id="a_tab_Informacion" data-toggle="tab" onclick="mostrarTab('div_Formulario')"
+                                       role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-info-circle"></i>&#160; Información</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-item nav-link" id="a_tab_Parametrizacion" data-toggle="tab" role="tab" onclick="mostrarTab('div_Logos')"
+                                       aria-controls="profile" aria-selected="false"><i class="fa fa-image"></i>&#160; Logos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-item nav-link" id="a_tab_Parametrizacion" data-toggle="tab" role="tab" onclick="mostrarTab('div_Parametros')"
+                                       aria-controls="profile" aria-selected="false"><i class="fa fa-cogs"></i>&#160; Parametrización</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" id="myTabContent">
+
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 tab-pane fade show active" id="div_Formulario" role="tabpanel">
+
+                                    <div class="row">
+                                        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+
+                                            <div class="form-group">
+                                                <img id="img_Logo" src="" title="Click para editar" onerror="this.src='../../img/sin-imagen.png'" alt="Logo" class="FormulariosImg" onclick="mostrarBuscadorImagen(this)">
+                                                <label class="btn btn-secondary col-md-12" onclick="img_Logo.click()">Agregar foto</label>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
+                                            <div class="row">
+
+                                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Tipo de identificación: </label>
+                                                        <div class="input-group">
+                                                            <select id="select_TipoIdentificacion" data-toggle="popover" class="form-control" mensaje="Tipo de identificación" requerido="true" validacion="texto">
+                                                                <option value="13">Cédula de ciudadanía</option>
+                                                                <option value="31">NIT</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Identificación: </label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon addon-primary">
+                                                                <i class="fa fa-code"></i>
+                                                            </span>
+                                                            <input type="text" class="form-control" data-toggle="popover" id="input_Identificacion" maxlength="20" mensaje="Identificación" requerido="true" validacion="texto" placeholder="Identificación" />
+                                                            <span class="input-group-addon addon-secondary" title="Dígito de verificacion" style="padding-top: 8px !important;">
+                                                                <label id="label_DigitoVerificacion">DV</label>
+                                                            </span>
+                                                        </div>
+                                                        <small class="form-text text-muted" style="text-align: right;">Maximo 20 caracteres.</small>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Razón social: </label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon addon-primary">
+                                                                <i class="fa fa-hospital-o"></i>
+                                                            </span>
+                                                            <input type="text" class="form-control" id="input_RazonSocial" data-toggle="popover" maxlength="200" mensaje="Razón social" requerido="true" validacion="texto" placeholder="Razón social" />
+                                                        </div>
+                                                        <small class="form-text text-muted" style="text-align: right;">Maximo 200 caracteres.</small>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>País: </label>
+                                                        <div class="input-group">
+                                                            <select id="select_Pais" class="form-control" mensaje="País" data-toggle="popover" requerido="true" validacion="texto" style="width:100%" placeholder="Seleccione..."></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Municipio: </label>
+                                                        <div class="input-group">
+                                                            <select id="select_Municipio" class="form-control" disabled mensaje="Municipio" data-toggle="popover" style="width:100%" requerido="true" validacion="texto" placeholder="Seleccione..."></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label for="input_Activo">Activo: </label><br />
+                                                <input type="checkbox" class="js-switch" id="input_Activo" checked />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Dirección: </label>
+                                                <div class="input-group">
+
+                                                    <span class="input-group-addon addon-primary">
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" maxlength="200" id="input_Direccion" data-toggle="popover" mensaje="Dirección" requerido="false" validacion="texto" placeholder="Dirección" />
+                                                </div>
+
+                                                <small class="form-text text-muted" style="text-align: right;">
+                                                    Máximo 200 caracteres.
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Teléfono 1: </label>
+                                                <div class="input-group">
+
+                                                    <span class="input-group-addon addon-primary">
+                                                        <i class="fa fa-phone"></i>
+                                                    </span>
+                                                    <input type="number" class="form-control" onkeypress="return keyUpSoloNumero(event)" maxlength="20" id="input_Telefono1" data-toggle="popover" mensaje="Teléfono" requerido="false" validacion="texto" placeholder="Teléfono" />
+
+                                                </div>
+                                                <small class="form-text text-muted" style="text-align: right;">
+                                                    Máximo 20 caracteres.
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Teléfono 2: </label>
+                                                <div class="input-group">
+
+                                                    <span class="input-group-addon addon-primary">
+                                                        <i class="fa fa-phone"></i>
+                                                    </span>
+                                                    <input type="number" class="form-control" onkeypress="return keyUpSoloNumero(event)" maxlength="20" id="input_Telefono2" data-toggle="popover" mensaje="Teléfono" requerido="false" validacion="texto" placeholder="Teléfono" />
+
+                                                </div>
+                                                <small class="form-text text-muted" style="text-align: right;">
+                                                    Máximo 20 caracteres.
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+
+                                            <div class="form-group">
+                                                <label>Celular: </label>
+                                                <div class="input-group">
+
+                                                    <span class="input-group-addon addon-primary">
+                                                        <i class="fa fa-mobile-phone"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" onkeypress="return keyUpSoloNumero(event)" maxlength="20" id="input_Celular" data-toggle="popover" data-mask="(999) 999-9999" mensaje="Teléfono" requerido="false" validacion="texto" placeholder="Celular" />
+
+                                                </div>
+                                                <small class="form-text text-muted" style="text-align: right;">
+                                                    Máximo 20 caracteres.
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Correo: </label>
+                                                <div class="input-group">
+
+                                                    <span class="input-group-addon addon-primary">
+                                                        <i class="fa fa-at"></i>
+                                                    </span>
+                                                    <input type="email" class="form-control" maxlength="200" id="input_Correo" data-toggle="popover" mensaje="Correo electrónico" requerido="false" validacion="correo" placeholder="Correo electrónico" />
+
+                                                </div>
+                                                <small class="form-text text-muted" style="text-align: right;">
+                                                    Máximo 200 caracteres.
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Página web: </label>
+                                                <div class="input-group">
+
+                                                    <span class="input-group-addon addon-primary">
+                                                        <i class="fa fa-dribbble"></i>
+                                                    </span>
+                                                    <input type="url" class="form-control" maxlength="255" id="input_PaginaWeb" data-toggle="popover" mensaje="Correo electrónico" requerido="false" validacion="texto" placeholder="Página web" />
+
+                                                </div>
+                                                <small class="form-text text-muted" style="text-align: right;">
+                                                    Máximo 255 caracteres.
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <input type="file" class="custom-file-input" id="input_FileImagen" style="display: none" accept="image/jpeg">
+
+                                </div>
+
+                                <!----------------------------------------INICIO PARAMETROS------------------------------------------------->
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 tab-pane fade" id="div_Logos" role="tabpanel">
+                                    <div class="row">
+
+                                        <div class="col-lg-offset-2 col-sm-offset-2 col-md-offset-2"  >
+                                            &#160;
+                                        </div>
+
+                                        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+
+                                            <div class="form-group">
+                                                <label>Logo impresión: </label>
+
+                                                <img id="img_LogoImpresion" src="" title="Click para editar" onerror="this.src='../../img/sin-imagen.png'" alt="Logo" class="FormulariosImg" onclick="mostrarBuscadorImagen(this)">
+                                                <label class="btn btn-secondary col-md-12" onclick="img_LogoImpresion.click()">Agregar foto</label>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+
+                                            <div class="form-group">
+                                                <label>Logo inicio sesión: </label>
+                                                <img id="img_LogoInicioSesion" src="" title="Click para editar" onerror="this.src='../../img/sin-imagen.png'" alt="Logo" class="FormulariosImg" onclick="mostrarBuscadorImagen(this)">
+                                                <label class="btn btn-secondary col-md-12" onclick="img_LogoInicioSesion.click()">Agregar foto</label>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!----------------------------------------FINAL  PARAMETROS------------------------------------------------->
+                                <!----------------------------------------INICIO PARAMETROS------------------------------------------------->
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 tab-pane fade" id="div_Parametros" role="tabpanel">
+                                    -----------------------xxx---------------------------------
+                                </div>
+                                <!----------------------------------------FINAL  PARAMETROS------------------------------------------------->
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!----------------------------------------FINAL  TABS------------------------------------------------->
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Mainly scripts -->
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../../js/plugins/dataTables/datatables.min.js"></script>
+    <script src="../../js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+    <script src="../../js/plugins/select2/select2.full.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="../../js/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Switchery -->
+    <script src="../../js/plugins/switchery/switchery.js"></script>
+    <!-- Input Mask-->
+    <script src="../../js/plugins/jasny/jasny-bootstrap.min.js"></script>
+
+    <script src="../../js/Configuracion.js?1.0"></script>
+    <script src="../../js/generales_Fn.js"></script>
+    <!--<script src="Empresas.min.js"></script>-->
+    <script src="Empresas.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+[
+  {
+    "outputFileName": "Maestros/Sedes/Sede.min.js",
+    "inputFiles": [
+      "Maestros/Sedes/Sede.js"
+    ]
+  },
+  {
+    "outputFileName": "Maestros/Empresas/Empresas.min.js",
+    "inputFiles": [
+      "Maestros/Empresas/Empresas.js"
+    ]
+  },
+  {
+    "outputFileName": "Maestros/Pacientes/Pacientes.min.js",
+    "inputFiles": [
+      "Maestros/Pacientes/Pacientes.js"
+    ]
+  }
+]

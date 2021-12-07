@@ -1,0 +1,279 @@
+﻿<!--
+*
+*  INSPINIA - Responsive Admin Theme
+*  version 2.8
+*
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mi Condominio</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Toastr style -->
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+    <!-- Gritter -->
+    <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet" />
+    <!-- Sweet Alert -->
+    <link href="css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet" />
+    <link href="css/user.css" rel="stylesheet" />
+    <link href="css/style.css?v2.0" rel="stylesheet" />
+
+    <style>
+        .grayscale {
+            filter: gray;
+            -webkit-filter: grayscale(0.85) !important;
+            -moz-filter: grayscale(0.85);
+            cursor: no-drop !important;
+            color: #b9b9b9c4 !important;
+        }
+        .subMenu {
+            color: #cbcbcc;
+        }
+        
+        .nav-label  {
+            color: #ececec;
+        }
+        a:not([href]):not([tabindex]){
+            color: #cbcbcc;
+        }
+    </style>
+
+</head>
+
+<body class="fixed-sidebar fixed-nav fixed-nav-basic s-skin-3">
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="text-center">
+                            <img id="logoEmpresa" alt="image" onerror="this.src='img/sin-imagen.png'" class="" width="100%" height="100%" />
+                            <span class="block m-t-xs font-bold " id="nombreEmpresa"></span>
+                            <!-- <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="block m-t-xs font-bold" id="span_NombreUsuario">David Williams</span>
+                                <span class="text-muted text-xs block"> <span id="span_RolUsuario">  Art Director </span> <b class="caret"> </span></b>
+                            </a> -->
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a class="dropdown-item" href="profile.html">Perfil</a></li>
+                                <li><a class="dropdown-item" href="contacts.html">Contactos</a></li>
+                                <li><a class="dropdown-item" href="mailbox.html">Buzón de correo</a></li>
+                                <li class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" onclick="logout()">Salir</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            Mi Condominio
+                        </div>
+                    </li>            
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom p-1">
+                <nav class="navbar navbar-fixed-top" role="navigation" style="margin-bottom: 0; height: 50px; background-color: #f3f3f4 !important;">
+                    <div class="navbar-header" >
+                        <a class="navbar-minimalize minimalize-styl-2 btn  btn-dark"  href="#"><i class="fa fa-bars"></i> </a>
+                        <!--<form role="search" class="navbar-form-custom" action="search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="Buscar..." class="form-control search-input" name="top-search" id="top-search">
+                            </div>
+                        </form>-->
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right" style="margin-top: -5px; ">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" style="color:  #999c9e !important;">
+                                <i class="fa fa-envelope"></i> <span class="label label-warning">0</span>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" style="color:  #999c9e !important;">
+                                <i class="fa fa-bell"></i> <span class="label label-primary">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                                <a id="user" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false" class="nav-link minimalize-styl-2 ">
+                                   <img id="img_FotoUsuarioMaqueta" alt="image" onerror="this.src='img/sin-imagen.png'" class="rounded-circle img_FotoUsuarioMaqueta" style="max-height: 34px;" />
+                                </a>
+                                <ul aria-labelledby="user" class="user-size dropdown-menu">
+                                    <li class="welcome">
+                                        <a href="#" id="configuracionUsuario" onclick="redireccionarVentana(this, 'Maestros/Usuarios/Usuarios.html?IdUsuario=5cb5d0205217a24920e4afe5&amp;IdEmpresa=5cac12055d717e661ea7b95b', 'Usuarios', '|N||G||E||C|zz')" id="7_7" class="edit-profil"><i  class="fa fa-cog" aria-hidden="true"></i></a>
+                                        <img id="img_FotoUsuarioMaqueta_MenuDesplegable" alt="image" onerror="this.src='img/sin-imagen.png'" class="rounded-circle img_FotoUsuarioMaqueta"   />
+                                    </li>
+                                    <li>
+                                        <a id="nombreUsuario"  style="cursor: default" class="dropdown-item text-center text-black">
+                                            Usuarios
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="app-mail.html" class="dropdown-item">
+                                            Messages
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-item no-padding-bottom">
+                                            Settings
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a rel="nofollow" onclick="logout()" class="dropdown-item logout btn1">
+                                            <i class="fa fa-power-off " aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+    
+                        <!-- <li>  
+                            <a onclick="logout()" style="color:  #999c9e !important;">
+                                <i class="fa fa-sign-out"></i> Log out
+                            </a>               
+                        </li> -->
+                    </ul>
+                    
+                    
+                </nav>
+            </div>
+
+            <div class="row wrapper border-bottom white-bg page-heading " id="div_bannerTitulo">
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">
+                    <h2 id="h2_TituloPanelMaqueta"></h2>
+                </div>
+                <div class="col-sm-9 col-md-9 col-lg-9 col-xs-12">
+                    <ul class="breadcrumb " id="ul_btn_Maqueta">
+                        <li class="breadcrumb-item">
+                            <div class="input-group-btn" id="div_btnOperaciones">
+                                <button disabled titlealt="Nuevo"    title="Nuevo" type="button" id="button_Nuevo" class="dim objControlOculto  btn btn-dark btnFormulario" operacion="N"><i class="fa fa-file"></i><span>&#160;Nuevo</span></button>
+                                <button disabled titlealt="Guardar"  title="Guardar" type="button" id="button_Guardar" class="dim objControlOculto  btn btn-dark btnFormulario" operacion='G'><i class="fa fa-save"></i><span>&#160;Guardar</span></button>
+                                <button disabled titlealt="Eliminar" title="Eliminar" type="button" id="button_Eliminar" class="dim objControlOculto  btn btn-dark btnFormulario" operacion="E"><i class="fa fa-trash"></i><span>&#160;Eliminar</span></button>
+                                <button disabled titlealt="Imprimir" title="Imprimir" type="button" id="button_Imprimir" class="dim objControlOculto  btn btn-dark btnFormulario" operacion="I"><i class="fa fa-print"></i><span>&#160;Imprimir</span></button>
+                                <button disabled titlealt="Cancelar" title="Cancelar" type="button" id="button_Cancelar" class="dim objControlOculto  btn btn-dark btnFormulario" operacion="C"><i class="fa fa-times-circle-o"></i><span>&#160;Cancelar</span></button>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <iframe id="iframe_BoxJob" style="width:100%;min-height:500px;margin-top: 30px;" frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src=""></iframe>
+
+            <div class="footer">
+                <div class="float-right">
+                    Powered by <strong>Tiserium</strong> &copy; 2019.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- GITTER -->
+    <script src="js/plugins/gritter/jquery.gritter.min.js"></script>
+    <!-- Sparkline -->
+    <script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!-- Sweet alert -->
+    <script src="js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="js/Configuracion.js"></script>
+    <!-- Toastr -->
+    <script src="js/Maqueta.js?v=1.19"></script>
+    <!-- Custom and plugin javascript-->
+    <script src="js/inspinia.js"></script>
+
+    <script>
+
+        function mostarAlertaSweet(sMensaje, sType, sTitulo, sTextOk, sFuncionOk, sTextCancel, sFuncionCancel, objData) {
+
+            var bMostrarBotonesCancel = false;
+
+            if (!sTitulo) {
+                sTitulo = "Mi Condominio";
+            }
+
+            if (!sType) {
+                sType = "warning";
+            }
+
+            if (!sTextOk) {
+                sTextOk = "Aceptar";
+            }
+
+            if (sType === "confirm") {
+                sType = "warning";
+                bMostrarBotonesCancel = true;
+
+
+                var objInputValue = {
+                    sFuncionOk: sFuncionOk
+                    , sFuncionCancel: sFuncionCancel
+                    , data: objData
+                }
+
+
+            }
+
+            swal({
+                title: sTitulo,
+                text: sMensaje,
+                type: sType, // "warning",
+
+                confirmButtonColor: "#1ab394",
+                confirmButtonText: sTextOk,
+                showConfirmButton: true,
+                showCancelButton: bMostrarBotonesCancel,
+                cancelButtonText: sTextCancel,
+                closeOnConfirm: true,
+                closeOnCancel: true,
+                inputValue: objInputValue
+
+            }, function (bRespuesta) {
+
+                var objInputValue = this.inputValue;
+                var objIframe = document.getElementById("iframe_BoxJob");
+                var objEvento = null;
+
+                if (objInputValue) {
+
+                    if (bRespuesta) {
+
+                        objEvento = eval('document.getElementById("' + objIframe.id + '").contentWindow.' + objInputValue.sFuncionOk);
+
+                    } else {
+
+                        objEvento = eval('document.getElementById("' + objIframe.id + '").contentWindow.' + objInputValue.sFuncionCancel);
+
+                    }
+
+                    if (objEvento !== null && objEvento) {
+                        objEvento(objInputValue.data);
+                        return;
+                    }
+                }
+
+            });
+
+        }
+
+    </script>
+
+
+
+</body>
+</html>
